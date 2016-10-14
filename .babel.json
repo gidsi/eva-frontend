@@ -1,0 +1,251 @@
+{
+  "{\"filename\":\"/root/webpack.config.babel.js\",\"env\":{\"development\":{\"plugins\":[]}},\"retainLines\":false,\"highlightCode\":true,\"suppressDeprecationMessages\":false,\"presets\":[],\"plugins\":[[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],{\"loose\":false}],[[],null],[[],null],[[],null],[[],null],[[],{\"loose\":false}],[[],null],[[],null],[[],null],[[],{\"loose\":false}],[[],{\"loose\":false}],[[],null],[[],null],[[],null],[[],{\"loose\":false}],[[],null],[[],{\"loose\":false}],[[],null],[[],null],[[],{\"loose\":false}],[[],{\"async\":false,\"asyncGenerators\":false}]],\"ignore\":[],\"code\":true,\"metadata\":true,\"ast\":true,\"comments\":true,\"compact\":\"auto\",\"minified\":false,\"babelrc\":true,\"sourceType\":\"module\",\"moduleIds\":false,\"passPerPreset\":false}:6.13.2:development": {
+    "metadata": {
+      "usedHelpers": [
+        "interopRequireDefault"
+      ],
+      "marked": [],
+      "modules": {
+        "imports": [
+          {
+            "source": "webpack",
+            "imported": [
+              "default"
+            ],
+            "specifiers": [
+              {
+                "kind": "named",
+                "imported": "default",
+                "local": "webpack"
+              }
+            ]
+          },
+          {
+            "source": "html-webpack-plugin",
+            "imported": [
+              "default"
+            ],
+            "specifiers": [
+              {
+                "kind": "named",
+                "imported": "default",
+                "local": "HtmlWebpackPlugin"
+              }
+            ]
+          }
+        ],
+        "exports": {
+          "exported": [],
+          "specifiers": []
+        }
+      }
+    },
+    "options": {
+      "filename": "/root/webpack.config.babel.js",
+      "filenameRelative": "/root/webpack.config.babel.js",
+      "env": {},
+      "retainLines": false,
+      "highlightCode": true,
+      "suppressDeprecationMessages": false,
+      "presets": [],
+      "plugins": [
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          {
+            "loose": false
+          }
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          {
+            "loose": false
+          }
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          {
+            "loose": false
+          }
+        ],
+        [
+          [],
+          {
+            "loose": false
+          }
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          {
+            "loose": false
+          }
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          {
+            "loose": false
+          }
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          {
+            "loose": false
+          }
+        ],
+        [
+          [],
+          {
+            "async": false,
+            "asyncGenerators": false
+          }
+        ]
+      ],
+      "ignore": [],
+      "code": true,
+      "metadata": true,
+      "ast": false,
+      "comments": true,
+      "compact": "auto",
+      "minified": false,
+      "sourceMaps": "both",
+      "sourceMapTarget": "webpack.config.babel.js",
+      "sourceFileName": "webpack.config.babel.js",
+      "babelrc": false,
+      "sourceType": "module",
+      "moduleIds": false,
+      "passPerPreset": false,
+      "basename": "webpack.config.babel"
+    },
+    "ignored": false,
+    "code": "'use strict';\n\nvar _webpack = require('webpack');\n\nvar _webpack2 = _interopRequireDefault(_webpack);\n\nvar _htmlWebpackPlugin = require('html-webpack-plugin');\n\nvar _htmlWebpackPlugin2 = _interopRequireDefault(_htmlWebpackPlugin);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\n// eslint-disable-next-line no-underscore-dangle\nvar __DEVELOPMENT__ = process.env.NODE_ENV === 'development';\n\nmodule.exports = {\n\tentry: ['react-hot-loader/patch', './src/index.js'],\n\n\toutput: {\n\t\tpath: 'dist',\n\t\tfilename: 'app.[hash].js',\n\t\tpublicPath: '/'\n\t},\n\n\tmodule: {\n\t\tloaders: [{\n\t\t\ttest: /.js$/,\n\t\t\texclude: /node_modules/,\n\t\t\tloaders: ['babel-loader']\n\t\t}, {\n\t\t\ttest: /\\.scss$/,\n\t\t\tloaders: ['style', 'css', 'sass']\n\t\t}, {\n\t\t\ttest: /\\.(svg|png|jpe?g|gif|woff2?|otf|ttf|eot)$/,\n\t\t\tloaders: ['url-loader?limit=8192']\n\t\t}]\n\t},\n\n\tplugins: [new _webpack2.default.DefinePlugin({\n\t\t__DEVELOPMENT__: __DEVELOPMENT__\n\t}), new _htmlWebpackPlugin2.default({\n\t\ttemplate: './src/index.html',\n\t\tfilename: 'index.html',\n\t\tinject: 'true',\n\t\tminify: {\n\t\t\tcollapseWhitespace: true\n\t\t}\n\t})],\n\n\tdevServer: {\n\t\tport: 3000,\n\t\thost: '0.0.0.0',\n\t\tcontentBase: 'dist',\n\t\tinline: true,\n\t\thot: true,\n\t\thistoryApiFallback: true\n\t}\n};\n\nif (__DEVELOPMENT__) {\n\tmodule.exports.plugins.push(new _webpack2.default.HotModuleReplacementPlugin(), new _webpack2.default.NoErrorsPlugin());\n\n\tmodule.exports.devtool = 'cheap-module-eval-source-map';\n} else {\n\tmodule.exports.plugins.push(new _webpack2.default.optimize.OccurrenceOrderPlugin(), new _webpack2.default.optimize.DedupePlugin(), new _webpack2.default.optimize.UglifyJsPlugin({\n\t\tcompress: {\n\t\t\twarnings: false\n\t\t}\n\t}));\n}\n;\n\n(function () {\n\tif (typeof __REACT_HOT_LOADER__ === 'undefined') {\n\t\treturn;\n\t}\n\n\t__REACT_HOT_LOADER__.register(__DEVELOPMENT__, '__DEVELOPMENT__', '/root/webpack.config.babel.js');\n})();\n\n;\n//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2suY29uZmlnLmJhYmVsLmpzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7O0FBQUE7Ozs7QUFDQTs7Ozs7O0FBRUE7QUFDQSxJQUFNLGtCQUFrQixRQUFRLEdBQVIsQ0FBWSxRQUFaLEtBQXlCLGFBQWpEOztBQUVBLE9BQU8sT0FBUCxHQUFpQjtBQUNoQixRQUFPLENBQ04sd0JBRE0sRUFFTixnQkFGTSxDQURTOztBQU1oQixTQUFRO0FBQ1AsUUFBTSxNQURDO0FBRVAsWUFBVSxlQUZIO0FBR1AsY0FBWTtBQUhMLEVBTlE7O0FBWWhCLFNBQVE7QUFDUCxXQUFTLENBQ1I7QUFDQyxTQUFNLE1BRFA7QUFFQyxZQUFTLGNBRlY7QUFHQyxZQUFTLENBQUMsY0FBRDtBQUhWLEdBRFEsRUFNUjtBQUNDLFNBQU0sU0FEUDtBQUVDLFlBQVMsQ0FBQyxPQUFELEVBQVUsS0FBVixFQUFpQixNQUFqQjtBQUZWLEdBTlEsRUFVUjtBQUNDLFNBQU0sMkNBRFA7QUFFQyxZQUFTLENBQUMsdUJBQUQ7QUFGVixHQVZRO0FBREYsRUFaUTs7QUE4QmhCLFVBQVMsQ0FDUixJQUFJLGtCQUFRLFlBQVosQ0FBeUI7QUFDeEI7QUFEd0IsRUFBekIsQ0FEUSxFQUlSLGdDQUFzQjtBQUNyQixZQUFVLGtCQURXO0FBRXJCLFlBQVUsWUFGVztBQUdyQixVQUFRLE1BSGE7QUFJckIsVUFBUTtBQUNQLHVCQUFvQjtBQURiO0FBSmEsRUFBdEIsQ0FKUSxDQTlCTzs7QUE0Q2hCLFlBQVc7QUFDVixRQUFNLElBREk7QUFFVixRQUFNLFNBRkk7QUFHVixlQUFhLE1BSEg7QUFJVixVQUFRLElBSkU7QUFLVixPQUFLLElBTEs7QUFNVixzQkFBb0I7QUFOVjtBQTVDSyxDQUFqQjs7QUFzREEsSUFBSSxlQUFKLEVBQXFCO0FBQ3BCLFFBQU8sT0FBUCxDQUFlLE9BQWYsQ0FBdUIsSUFBdkIsQ0FDQyxJQUFJLGtCQUFRLDBCQUFaLEVBREQsRUFFQyxJQUFJLGtCQUFRLGNBQVosRUFGRDs7QUFLQSxRQUFPLE9BQVAsQ0FBZSxPQUFmLEdBQXlCLDhCQUF6QjtBQUNBLENBUEQsTUFPTztBQUNOLFFBQU8sT0FBUCxDQUFlLE9BQWYsQ0FBdUIsSUFBdkIsQ0FDQyxJQUFJLGtCQUFRLFFBQVIsQ0FBaUIscUJBQXJCLEVBREQsRUFFQyxJQUFJLGtCQUFRLFFBQVIsQ0FBaUIsWUFBckIsRUFGRCxFQUdDLElBQUksa0JBQVEsUUFBUixDQUFpQixjQUFyQixDQUFvQztBQUNuQyxZQUFVO0FBQ1QsYUFBVTtBQUREO0FBRHlCLEVBQXBDLENBSEQ7QUFTQTs7Ozs7Ozs7K0JBekVLLGUiLCJmaWxlIjoid2VicGFjay5jb25maWcuYmFiZWwuanMiLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgd2VicGFjayBmcm9tICd3ZWJwYWNrJztcbmltcG9ydCBIdG1sV2VicGFja1BsdWdpbiBmcm9tICdodG1sLXdlYnBhY2stcGx1Z2luJztcblxuLy8gZXNsaW50LWRpc2FibGUtbmV4dC1saW5lIG5vLXVuZGVyc2NvcmUtZGFuZ2xlXG5jb25zdCBfX0RFVkVMT1BNRU5UX18gPSBwcm9jZXNzLmVudi5OT0RFX0VOViA9PT0gJ2RldmVsb3BtZW50JztcblxubW9kdWxlLmV4cG9ydHMgPSB7XG5cdGVudHJ5OiBbXG5cdFx0J3JlYWN0LWhvdC1sb2FkZXIvcGF0Y2gnLFxuXHRcdCcuL3NyYy9pbmRleC5qcycsXG5cdF0sXG5cblx0b3V0cHV0OiB7XG5cdFx0cGF0aDogJ2Rpc3QnLFxuXHRcdGZpbGVuYW1lOiAnYXBwLltoYXNoXS5qcycsXG5cdFx0cHVibGljUGF0aDogJy8nLFxuXHR9LFxuXG5cdG1vZHVsZToge1xuXHRcdGxvYWRlcnM6IFtcblx0XHRcdHtcblx0XHRcdFx0dGVzdDogLy5qcyQvLFxuXHRcdFx0XHRleGNsdWRlOiAvbm9kZV9tb2R1bGVzLyxcblx0XHRcdFx0bG9hZGVyczogWydiYWJlbC1sb2FkZXInXSxcblx0XHRcdH0sXG5cdFx0XHR7XG5cdFx0XHRcdHRlc3Q6IC9cXC5zY3NzJC8sXG5cdFx0XHRcdGxvYWRlcnM6IFsnc3R5bGUnLCAnY3NzJywgJ3Nhc3MnXSxcblx0XHRcdH0sXG5cdFx0XHR7XG5cdFx0XHRcdHRlc3Q6IC9cXC4oc3ZnfHBuZ3xqcGU/Z3xnaWZ8d29mZjI/fG90Znx0dGZ8ZW90KSQvLFxuXHRcdFx0XHRsb2FkZXJzOiBbJ3VybC1sb2FkZXI/bGltaXQ9ODE5MiddLFxuXHRcdFx0fSxcblx0XHRdLFxuXHR9LFxuXG5cdHBsdWdpbnM6IFtcblx0XHRuZXcgd2VicGFjay5EZWZpbmVQbHVnaW4oe1xuXHRcdFx0X19ERVZFTE9QTUVOVF9fLFxuXHRcdH0pLFxuXHRcdG5ldyBIdG1sV2VicGFja1BsdWdpbih7XG5cdFx0XHR0ZW1wbGF0ZTogJy4vc3JjL2luZGV4Lmh0bWwnLFxuXHRcdFx0ZmlsZW5hbWU6ICdpbmRleC5odG1sJyxcblx0XHRcdGluamVjdDogJ3RydWUnLFxuXHRcdFx0bWluaWZ5OiB7XG5cdFx0XHRcdGNvbGxhcHNlV2hpdGVzcGFjZTogdHJ1ZSxcblx0XHRcdH0sXG5cdFx0fSksXG5cdF0sXG5cblx0ZGV2U2VydmVyOiB7XG5cdFx0cG9ydDogMzAwMCxcblx0XHRob3N0OiAnMC4wLjAuMCcsXG5cdFx0Y29udGVudEJhc2U6ICdkaXN0Jyxcblx0XHRpbmxpbmU6IHRydWUsXG5cdFx0aG90OiB0cnVlLFxuXHRcdGhpc3RvcnlBcGlGYWxsYmFjazogdHJ1ZSxcblx0fSxcbn07XG5cbmlmIChfX0RFVkVMT1BNRU5UX18pIHtcblx0bW9kdWxlLmV4cG9ydHMucGx1Z2lucy5wdXNoKFxuXHRcdG5ldyB3ZWJwYWNrLkhvdE1vZHVsZVJlcGxhY2VtZW50UGx1Z2luKCksXG5cdFx0bmV3IHdlYnBhY2suTm9FcnJvcnNQbHVnaW4oKSxcblx0KTtcblxuXHRtb2R1bGUuZXhwb3J0cy5kZXZ0b29sID0gJ2NoZWFwLW1vZHVsZS1ldmFsLXNvdXJjZS1tYXAnO1xufSBlbHNlIHtcblx0bW9kdWxlLmV4cG9ydHMucGx1Z2lucy5wdXNoKFxuXHRcdG5ldyB3ZWJwYWNrLm9wdGltaXplLk9jY3VycmVuY2VPcmRlclBsdWdpbigpLFxuXHRcdG5ldyB3ZWJwYWNrLm9wdGltaXplLkRlZHVwZVBsdWdpbigpLFxuXHRcdG5ldyB3ZWJwYWNrLm9wdGltaXplLlVnbGlmeUpzUGx1Z2luKHtcblx0XHRcdGNvbXByZXNzOiB7XG5cdFx0XHRcdHdhcm5pbmdzOiBmYWxzZSxcblx0XHRcdH0sXG5cdFx0fSksXG5cdCk7XG59XG4iXX0=",
+    "ast": null,
+    "map": {
+      "version": 3,
+      "sources": [
+        "webpack.config.babel.js"
+      ],
+      "names": [],
+      "mappings": ";;AAAA;;;;AACA;;;;;;AAEA;AACA,IAAM,kBAAkB,QAAQ,GAAR,CAAY,QAAZ,KAAyB,aAAjD;;AAEA,OAAO,OAAP,GAAiB;AAChB,QAAO,CACN,wBADM,EAEN,gBAFM,CADS;;AAMhB,SAAQ;AACP,QAAM,MADC;AAEP,YAAU,eAFH;AAGP,cAAY;AAHL,EANQ;;AAYhB,SAAQ;AACP,WAAS,CACR;AACC,SAAM,MADP;AAEC,YAAS,cAFV;AAGC,YAAS,CAAC,cAAD;AAHV,GADQ,EAMR;AACC,SAAM,SADP;AAEC,YAAS,CAAC,OAAD,EAAU,KAAV,EAAiB,MAAjB;AAFV,GANQ,EAUR;AACC,SAAM,2CADP;AAEC,YAAS,CAAC,uBAAD;AAFV,GAVQ;AADF,EAZQ;;AA8BhB,UAAS,CACR,IAAI,kBAAQ,YAAZ,CAAyB;AACxB;AADwB,EAAzB,CADQ,EAIR,gCAAsB;AACrB,YAAU,kBADW;AAErB,YAAU,YAFW;AAGrB,UAAQ,MAHa;AAIrB,UAAQ;AACP,uBAAoB;AADb;AAJa,EAAtB,CAJQ,CA9BO;;AA4ChB,YAAW;AACV,QAAM,IADI;AAEV,QAAM,SAFI;AAGV,eAAa,MAHH;AAIV,UAAQ,IAJE;AAKV,OAAK,IALK;AAMV,sBAAoB;AANV;AA5CK,CAAjB;;AAsDA,IAAI,eAAJ,EAAqB;AACpB,QAAO,OAAP,CAAe,OAAf,CAAuB,IAAvB,CACC,IAAI,kBAAQ,0BAAZ,EADD,EAEC,IAAI,kBAAQ,cAAZ,EAFD;;AAKA,QAAO,OAAP,CAAe,OAAf,GAAyB,8BAAzB;AACA,CAPD,MAOO;AACN,QAAO,OAAP,CAAe,OAAf,CAAuB,IAAvB,CACC,IAAI,kBAAQ,QAAR,CAAiB,qBAArB,EADD,EAEC,IAAI,kBAAQ,QAAR,CAAiB,YAArB,EAFD,EAGC,IAAI,kBAAQ,QAAR,CAAiB,cAArB,CAAoC;AACnC,YAAU;AACT,aAAU;AADD;AADyB,EAApC,CAHD;AASA;;;;;;;;+BAzEK,e",
+      "file": "webpack.config.babel.js",
+      "sourcesContent": [
+        "import webpack from 'webpack';\nimport HtmlWebpackPlugin from 'html-webpack-plugin';\n\n// eslint-disable-next-line no-underscore-dangle\nconst __DEVELOPMENT__ = process.env.NODE_ENV === 'development';\n\nmodule.exports = {\n\tentry: [\n\t\t'react-hot-loader/patch',\n\t\t'./src/index.js',\n\t],\n\n\toutput: {\n\t\tpath: 'dist',\n\t\tfilename: 'app.[hash].js',\n\t\tpublicPath: '/',\n\t},\n\n\tmodule: {\n\t\tloaders: [\n\t\t\t{\n\t\t\t\ttest: /.js$/,\n\t\t\t\texclude: /node_modules/,\n\t\t\t\tloaders: ['babel-loader'],\n\t\t\t},\n\t\t\t{\n\t\t\t\ttest: /\\.scss$/,\n\t\t\t\tloaders: ['style', 'css', 'sass'],\n\t\t\t},\n\t\t\t{\n\t\t\t\ttest: /\\.(svg|png|jpe?g|gif|woff2?|otf|ttf|eot)$/,\n\t\t\t\tloaders: ['url-loader?limit=8192'],\n\t\t\t},\n\t\t],\n\t},\n\n\tplugins: [\n\t\tnew webpack.DefinePlugin({\n\t\t\t__DEVELOPMENT__,\n\t\t}),\n\t\tnew HtmlWebpackPlugin({\n\t\t\ttemplate: './src/index.html',\n\t\t\tfilename: 'index.html',\n\t\t\tinject: 'true',\n\t\t\tminify: {\n\t\t\t\tcollapseWhitespace: true,\n\t\t\t},\n\t\t}),\n\t],\n\n\tdevServer: {\n\t\tport: 3000,\n\t\thost: '0.0.0.0',\n\t\tcontentBase: 'dist',\n\t\tinline: true,\n\t\thot: true,\n\t\thistoryApiFallback: true,\n\t},\n};\n\nif (__DEVELOPMENT__) {\n\tmodule.exports.plugins.push(\n\t\tnew webpack.HotModuleReplacementPlugin(),\n\t\tnew webpack.NoErrorsPlugin(),\n\t);\n\n\tmodule.exports.devtool = 'cheap-module-eval-source-map';\n} else {\n\tmodule.exports.plugins.push(\n\t\tnew webpack.optimize.OccurrenceOrderPlugin(),\n\t\tnew webpack.optimize.DedupePlugin(),\n\t\tnew webpack.optimize.UglifyJsPlugin({\n\t\t\tcompress: {\n\t\t\t\twarnings: false,\n\t\t\t},\n\t\t}),\n\t);\n}\n"
+      ]
+    },
+    "mtime": 1471294759006
+  }
+}
