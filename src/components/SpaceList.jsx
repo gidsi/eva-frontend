@@ -2,52 +2,46 @@ import React from 'react';
 import {
     Table,
     TableBody,
-    TableFooter,
-    TableHeader,
-    TableHeaderColumn,
     TableRow,
     TableRowColumn,
 } from 'material-ui/Table';
 
 export class SpaceList extends React.Component {
-  static props = {
+  static propTypes = {
     fetchSpacedata: React.PropTypes.func.isRequired,
     spacedata: React.PropTypes.object,
   };
 
   static defaultProps = {
-      spacedata: {
-          items: [],
-      }
+    spacedata: {
+      items: [],
+    },
   };
 
   componentWillMount() {
-      this.props.fetchSpacedata();
+    this.props.fetchSpacedata();
   }
 
   render() {
-    return(
+    return (
       <Table
-          selectable
-          multiSelectable
+        selectable
+        multiSelectable
       >
         <TableBody
-            showRowHover
-            stripedRows
-            displayRowCheckbox={false}
+          showRowHover
+          stripedRows
+          displayRowCheckbox={false}
         >
           {this.props.spacedata.items
-              .map(space => {
-            return (
-                <TableRow key={space.space}>
-                    <TableRowColumn>
-                        {space.space}
-                    </TableRowColumn>
-                    <TableRowColumn>
-                    </TableRowColumn>
-                </TableRow>
-            );
-          })}
+            .map(space => (
+              <TableRow key={space.space}>
+                <TableRowColumn>
+                  {space.space}
+                </TableRowColumn>
+              </TableRow>
+            )
+          )}
         </TableBody>
       </Table>
     );

@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import {Table, TableBody, TableFooter, TableHeader, TableHeaderColumn, TableRow, TableRowColumn}
+import { Table, TableBody, TableRow, TableRowColumn }
   from 'material-ui/Table';
 import { actions as calendarActions } from '../redux/modules/calendar';
 
@@ -9,62 +9,60 @@ const mapStateToProps = (state) => ({
   spacedata: state.spacedata,
 });
 
-export class EventList extends React.Component {
-  static props = {
+class EventList extends React.Component {
+  static propTypes = {
     events: React.PropTypes.array,
     fetchCalendars: React.PropTypes.func,
     spacedata: React.PropTypes.object,
   };
 
   defaultProps = {
-    events: []
+    events: [],
   };
 
   componentWillMount() {
-      this.props.fetchCalendars();
+    this.props.fetchCalendars();
   }
 
-  formatDate = (date) => {
-      return date.format('DD.MM.YYYY');
-  };
-
-  formatTime = (date) => {
-      return date.format('HH:mm');
-  };
+  formatDate = (date) => (date.format('DD.MM.YYYY'));
+  formatTime = (date) => (date.format('HH:mm'));
 
   render() {
-    return(
+    return (
       <Table
-          selectable
-          multiSelectable
+        selectable
+        multiSelectable
       >
         <TableBody
-            showRowHover
-            stripedRows
-            displayRowCheckbox={false}
+          showRowHover
+          stripedRows
+          displayRowCheckbox={false}
         >
           {this.props.events
-              .filter(event => this.props.spacedata.filter.indexOf(event.space) !== -1 || this.props.spacedata.filter.length === 0)
-              .map(event => {
-            return (
-                <TableRow
-                    key={event.ImportedId + (event.Description || event.Summary)}
-                >
-                    <TableRowColumn style={{ width: '80px', padding: '5px' }}>
-                        {this.formatDate(event.start)}
-                    </TableRowColumn>
-                    <TableRowColumn style={{ width: '55px', padding: '5px' }}>
-                        {event.WholeDayEvent ? null : this.formatTime(event.start)}
-                    </TableRowColumn>
-                    <TableRowColumn>
-                        {event.Description || event.Summary}
-                    </TableRowColumn>
-                    <TableRowColumn>
-                        {event.space}
-                    </TableRowColumn>
-                </TableRow>
-            );
-          })}
+            .filter(event =>
+              (
+                this.props.spacedata.filter.indexOf(event.space) !== -1
+                || this.props.spacedata.filter.length === 0
+              )
+            )
+            .map(event => (
+              <TableRow
+                key={event.ImportedId + (event.Description || event.Summary)}
+              >
+                <TableRowColumn style={{ width: '80px', padding: '5px' }}>
+                  {this.formatDate(event.start)}
+                </TableRowColumn>
+                <TableRowColumn style={{ width: '55px', padding: '5px' }}>
+                  {event.WholeDayEvent ? null : this.formatTime(event.start)}
+                </TableRowColumn>
+                <TableRowColumn>
+                  {event.Description || event.Summary}
+                </TableRowColumn>
+                <TableRowColumn>
+                  {event.space}
+                </TableRowColumn>
+              </TableRow>
+            ))}
         </TableBody>
       </Table>
     );
@@ -72,5 +70,5 @@ export class EventList extends React.Component {
 }
 
 export default connect(mapStateToProps, {
-    ...calendarActions,
+  ...calendarActions,
 })(EventList);

@@ -1,23 +1,23 @@
 import React from 'react';
+import request from 'superagent';
 import TextField from 'material-ui/TextField';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import ContentAdd from 'material-ui/svg-icons/content/add';
 import config from '../api/config';
-import request from 'superagent';
 
-export class SpaceApiInput extends React.Component {
-  static props = {
+class SpaceApiInput extends React.Component {
+  static propTypes = {
     style: React.PropTypes.object,
   };
 
   static defaultProps = {
-      style: {},
+    style: {},
   };
 
   getStyle = () => ({
-      display: 'flexbox',
-      alignItems: 'center',
-      ...this.props.style,
+    display: 'flexbox',
+    alignItems: 'center',
+    ...this.props.style,
   });
 
   handleInputChange = (event) => {
@@ -25,37 +25,35 @@ export class SpaceApiInput extends React.Component {
   };
 
   handleButtonClick = () => {
-      request
-          .post(config.api.url + '/urls')
+    request
+          .post(`${config.api.url}/urls`)
           .send({
-              url: this.state.url
+            url: this.state.url,
           })
           .set('Content-Type', 'application/json')
-          .end((err, res) => {
-              if (err) {
-                  console.log('cant create spaceurl');
-              } else {
-                  this.spaceApiInput.input.value = '';
-              }
+          .end((err) => {
+            if (!err) {
+              this.spaceApiInput.input.value = '';
+            }
           });
   };
 
   render() {
-    return(
-        <div style={this.getStyle()}>
-          <TextField
-              name={'spaceapi-input'}
-              onChange={this.handleInputChange}
-              ref={(ref) => this.spaceApiInput = ref}
-          />
-          <FloatingActionButton
-              style={{ marginLeft: '20px' }}
-              mini
-              onTouchTap={this.handleButtonClick}
-          >
-              <ContentAdd />
-          </FloatingActionButton>
-        </div>
+    return (
+      <div style={this.getStyle()}>
+        <TextField
+          name={'spaceapi-input'}
+          onChange={this.handleInputChange}
+          ref={(ref) => (this.spaceApiInput = ref)}
+        />
+        <FloatingActionButton
+          style={{ marginLeft: '20px' }}
+          mini
+          onTouchTap={this.handleButtonClick}
+        >
+          <ContentAdd />
+        </FloatingActionButton>
+      </div>
     );
   }
 }

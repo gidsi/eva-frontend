@@ -10,10 +10,4 @@
 	"globals": {
 		"__DEVELOPMENT__": true,
 	},
-	"rules": {
-		"indent" : ["error", "tab", { "SwitchCase": 1 }],
-		"react/jsx-indent": ["error", 'tab'],
-		"react/jsx-indent-props": ["error", 'tab'],
-		"no-tabs": "off"
-	}
 }

@@ -6,21 +6,21 @@ import App from './App';
 const ROOT = document.getElementById('app');
 
 ReactDOM.render(
-	<AppContainer>
-		<App />
-	</AppContainer>,
-	ROOT
+  <AppContainer>
+    <App />
+  </AppContainer>,
+  ROOT
 );
 
 if (__DEVELOPMENT__ && module.hot) {
-	module.hot.accept('./App', () => {
-		const NextApp = require('./App').default; // eslint-disable-line global-require
+  module.hot.accept('./App', () => {
+    const NextApp = require('./App').default; // eslint-disable-line global-require
 
-		ReactDOM.render(
-			<AppContainer>
-				<NextApp />
-			</AppContainer>,
-			ROOT
-		);
-	});
+    ReactDOM.render(
+      <AppContainer>
+        <NextApp />
+      </AppContainer>,
+      ROOT
+    );
+  });
 }

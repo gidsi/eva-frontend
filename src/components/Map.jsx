@@ -4,18 +4,16 @@ import { connect } from 'react-redux';
 import Marker from './Marker';
 import { actions as spaceDataActions } from '../redux/modules/spacedata';
 
-const mapStateToProps = (state) => {
-  return {
-    spacedata: state.spacedata,
-  }
-};
+const mapStateToProps = (state) => ({
+  spacedata: state.spacedata,
+});
 
 const mapDispatchToProps = {
-  ...spaceDataActions
+  ...spaceDataActions,
 };
 
-export class Map extends React.Component {
-  static props = {
+class Map extends React.Component {
+  static propTypes = {
     spacedata: React.PropTypes.array.isRequired,
     fetchSpacedata: React.PropTypes.func.isRequired,
     toggleFilterSpacedata: React.PropTypes.func.isRequired,
@@ -27,27 +25,29 @@ export class Map extends React.Component {
 
   render() {
     const centerGermany = [51.163375, 10.447683];
-    return(
+    return (
       <LeafletMap
-          center={centerGermany}
-          zoom={5}
-          style={{ width: '100vw', height: '50vh', margin: 0, padding: 0, maxWidth: '100%', }}
+        center={centerGermany}
+        zoom={5}
+        style={{ width: '100vw', height: '50vh', margin: 0, padding: 0, maxWidth: '100%' }}
       >
         <TileLayer
             // url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
             // url='http://{s}.tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png'
-            url='http://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png'
+          url="http://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png"
         />
-        {this.props.spacedata.items.map((spacedata) => {
-          return (
-              <Marker
-                  spacedata={spacedata}
-                  key={spacedata.space}
-                  highlight={this.props.spacedata.filter.length === 0 || this.props.spacedata.filter.indexOf(spacedata.space) !== -1}
-                  toggleFilterSpacedata={this.props.toggleFilterSpacedata}
-              />
-          );
-        })}
+        {this.props.spacedata.items.map(
+          (spacedata) => (
+            <Marker
+              spacedata={spacedata}
+              key={spacedata.space}
+              highlight={
+                this.props.spacedata.filter.length === 0
+                || this.props.spacedata.filter.indexOf(spacedata.space) !== -1}
+              toggleFilterSpacedata={this.props.toggleFilterSpacedata}
+            />
+          )
+        )}
       </LeafletMap>
     );
   }
