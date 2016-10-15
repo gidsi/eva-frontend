@@ -1,29 +1,5 @@
-React/Redux Boilerplate
+eve-frontend
 =======================
-
-[![Dependency Status](https://david-dm.org/fuglu/react-redux-boilerplate.svg)](https://david-dm.org/fuglu/react-redux-boilerplate)
-[![Build Status](https://travis-ci.org/fuglu/react-redux-boilerplate.svg)](https://travis-ci.org/fuglu/react-redux-boilerplate)
-[![GitHub version](https://badge.fury.io/gh/fuglu%2Freact-redux-boilerplate.svg)](http://badge.fury.io/gh/fuglu%2Freact-redux-boilerplate)
-
-
-
-What's inside?
---------------
-
-* [React](https://facebook.github.io/react/) - A JavaScript library for building user interfaces
-* [Redux](https://github.com/reactjs/redux) - Redux is a predictable state container for JavaScript apps.
-* [React Router](https://github.com/reactjs/react-router) - React Router is a complete routing library for React.
-* [Babel](https://webpack.github.io/) - Babel is a JavaScript compiler. Use next generation JavaScript, today.
-* [webpack](https://webpack.github.io/) - A bundler for javascript and friends. Packs many modules into a few bundled assets.
-* [nodemon](http://nodemon.io/) - nodemon is a utility that will monitor for any changes in your source and automatically restart your server.
-* [React Hot Loader](https://github.com/gaearon/react-hot-loader) - Tweak React components in real time.
-* [Redux DevTools Extension](https://github.com/zalmoxisus/redux-devtools-extension) - DevTools for Redux with actions history, undo and replay
-* [Jest](https://facebook.github.io/jest/) - Jest is a JavaScript unit testing framework, used by Facebook to test services and React applications.
-* [Enzyme](http://airbnb.io/enzyme/) - Enzyme is a JavaScript Testing utility for React that makes it easier to assert, manipulate, and traverse your React Components' output.
-* [ESLint](http://eslint.org/) - The pluggable linting utility for JavaScript and JSX
-* [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript) - A mostly reasonable approach to JavaScript
-
-
 
 Usage
 -----
