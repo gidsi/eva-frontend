@@ -1,12 +1,21 @@
+import { PropTypes } from 'react';
 import request from 'superagent';
 import flatten from 'lodash/flatten';
 import moment from 'moment';
 import { createAction, handleActions } from 'redux-actions';
 import config from '../../api/config';
 
+export const eventStruct = {
+  start: PropTypes.string.isRequired,
+  WholeDayEvent: PropTypes.bool.isRequired,
+  Description: PropTypes.string.isRequired,
+  Summary: PropTypes.string.isRequired,
+  space: PropTypes.string.isRequired,
+};
+
 const CALENDARS_FETCHED = 'CALENDARS_FETCHED';
 
-export const fetched = createAction(CALENDARS_FETCHED, (result) => result);
+export const fetched = createAction(CALENDARS_FETCHED, result => result);
 
 export const fetchCalendars = () => (dispatch) => {
   request
@@ -41,7 +50,7 @@ export default handleActions({
         )
       )
     )
-    .filter((event) => event.start.isAfter())
+    .filter(event => event.start.isAfter())
     .sort((a, b) => a.start - b.start);
     return { items };
   },

@@ -7,7 +7,7 @@ import config from '../api/config';
 
 class SpaceApiInput extends React.Component {
   static propTypes = {
-    style: React.PropTypes.object,
+    style: React.PropTypes.shape({}),
   };
 
   static defaultProps = {
@@ -44,7 +44,7 @@ class SpaceApiInput extends React.Component {
         <TextField
           name={'spaceapi-input'}
           onChange={this.handleInputChange}
-          ref={(ref) => (this.spaceApiInput = ref)}
+          ref={ref => (this.spaceApiInput = ref)}
         />
         <FloatingActionButton
           style={{ marginLeft: '20px' }}

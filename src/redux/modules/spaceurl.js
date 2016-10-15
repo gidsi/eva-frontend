@@ -4,9 +4,9 @@ import config from '../../api/config';
 
 const SPACEURL_CREATED = 'SPACEURL_CREATED';
 
-export const fetched = createAction(SPACEURL_CREATED, (result) => result);
+export const fetched = createAction(SPACEURL_CREATED, result => result);
 
-export const addSpaceUrl = (url) => (dispatch) => {
+export const addSpaceUrl = url => (dispatch) => {
   request
     .post(`${config.api.url}/url`)
     .send({

@@ -1,12 +1,23 @@
+import { PropTypes } from 'react';
 import request from 'superagent';
 import { createAction, handleActions } from 'redux-actions';
 import config from '../../api/config';
 
+export const filterStruct = PropTypes.arrayOf(PropTypes.string);
+export const spacedataElementStruct = PropTypes.shape({
+  space: PropTypes.string.isRequired,
+});
+export const itemsStruct = PropTypes.arrayOf(spacedataElementStruct);
+export const spacedataStruct = PropTypes.shape({
+  items: itemsStruct,
+  filter: filterStruct,
+});
+
 const SPACEDATA_FETCHED = 'SPACEDATA_FETCHED';
 const SPACEDATA_FILTER = 'SPACEDATA_FILTER';
 
-export const fetched = createAction(SPACEDATA_FETCHED, (result) => result);
-export const filter = createAction(SPACEDATA_FILTER, (result) => result);
+export const fetched = createAction(SPACEDATA_FETCHED, result => result);
+export const filter = createAction(SPACEDATA_FILTER, result => result);
 
 export const fetchSpacedata = () => (dispatch) => {
   request
@@ -21,7 +32,7 @@ export const fetchSpacedata = () => (dispatch) => {
     );
 };
 
-export const toggleFilterSpacedata = (space) => (dispatch) => {
+export const toggleFilterSpacedata = space => (dispatch) => {
   dispatch(
     filter(
       {

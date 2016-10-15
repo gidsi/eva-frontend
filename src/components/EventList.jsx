@@ -2,18 +2,21 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Table, TableBody, TableRow, TableRowColumn }
   from 'material-ui/Table';
-import { actions as calendarActions } from '../redux/modules/calendar';
+import { actions as calendarActions, eventStruct } from '../redux/modules/calendar';
+import { filterStruct } from '../redux/modules/spacedata';
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   events: state.calendars.items,
-  spacedata: state.spacedata,
+  filter: state.spacedata.filter,
 });
 
 class EventList extends React.Component {
   static propTypes = {
-    events: React.PropTypes.array,
+    events: React.PropTypes.arrayOf(
+      React.PropTypes.shape(eventStruct),
+    ),
     fetchCalendars: React.PropTypes.func,
-    spacedata: React.PropTypes.object,
+    filter: filterStruct,
   };
 
   defaultProps = {
@@ -24,8 +27,8 @@ class EventList extends React.Component {
     this.props.fetchCalendars();
   }
 
-  formatDate = (date) => (date.format('DD.MM.YYYY'));
-  formatTime = (date) => (date.format('HH:mm'));
+  formatDate = date => (date.format('DD.MM.YYYY'));
+  formatTime = date => (date.format('HH:mm'));
 
   render() {
     return (
@@ -41,8 +44,8 @@ class EventList extends React.Component {
           {this.props.events
             .filter(event =>
               (
-                this.props.spacedata.filter.indexOf(event.space) !== -1
-                || this.props.spacedata.filter.length === 0
+                this.props.filter.indexOf(event.space) !== -1
+                || this.props.filter.length === 0
               )
             )
             .map(event => (

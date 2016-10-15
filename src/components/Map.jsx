@@ -2,9 +2,9 @@ import React from 'react';
 import { Map as LeafletMap, TileLayer } from 'react-leaflet';
 import { connect } from 'react-redux';
 import Marker from './Marker';
-import { actions as spaceDataActions } from '../redux/modules/spacedata';
+import { actions as spaceDataActions, spacedataStruct } from '../redux/modules/spacedata';
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   spacedata: state.spacedata,
 });
 
@@ -14,7 +14,7 @@ const mapDispatchToProps = {
 
 class Map extends React.Component {
   static propTypes = {
-    spacedata: React.PropTypes.array.isRequired,
+    spacedata: spacedataStruct.isRequired,
     fetchSpacedata: React.PropTypes.func.isRequired,
     toggleFilterSpacedata: React.PropTypes.func.isRequired,
   };
@@ -37,7 +37,7 @@ class Map extends React.Component {
           url="http://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png"
         />
         {this.props.spacedata.items.map(
-          (spacedata) => (
+          spacedata => (
             <Marker
               spacedata={spacedata}
               key={spacedata.space}

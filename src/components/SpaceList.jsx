@@ -5,11 +5,12 @@ import {
     TableRow,
     TableRowColumn,
 } from 'material-ui/Table';
+import { spacedataStruct } from '../redux/modules/spacedata';
 
 export class SpaceList extends React.Component {
   static propTypes = {
     fetchSpacedata: React.PropTypes.func.isRequired,
-    spacedata: React.PropTypes.object,
+    spacedata: spacedataStruct,
   };
 
   static defaultProps = {
