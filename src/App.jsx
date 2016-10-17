@@ -9,6 +9,7 @@ import theme from './style/theme';
 import store from './redux/store';
 import IndexContainer from './views/Index';
 import SpaceList from './views/SpaceList';
+import UrlListView from './views/UrlListView';
 import layout from './layout';
 
 import './core.scss';
@@ -24,7 +25,8 @@ const App = () => (
     <Provider store={store}>
       <Router history={history}>
         <Route path="/list" component={layout(<SpaceList />)} />
-        <Route path="/" component={layout(<IndexContainer />)} />
+        <Route path="/urls" component={layout(<UrlListView />)} />
+        <Route path="*" component={layout(<IndexContainer />)} />
       </Router>
     </Provider>
   </MuiThemeProvider>

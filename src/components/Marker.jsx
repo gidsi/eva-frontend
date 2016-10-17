@@ -1,6 +1,7 @@
 import React from 'react';
 import { CircleMarker } from 'react-leaflet';
 import theme from '../style/theme';
+import { spacedataElementStruct } from '../redux/modules/spacedata';
 
 const Marker = (props) => {
   const handleClick = () => {
@@ -20,13 +21,7 @@ const Marker = (props) => {
 };
 
 Marker.propTypes = {
-  spacedata: React.PropTypes.objectOf({
-    space: React.PropTypes.string.isRequired,
-    location: React.PropTypes.objectOf({
-      lat: React.PropTypes.number.isRequired,
-      lon: React.PropTypes.number.isRequired,
-    }),
-  }).isRequired,
+  spacedata: spacedataElementStruct.isRequired,
   highlight: React.PropTypes.bool.isRequired,
   toggleFilterSpacedata: React.PropTypes.func.isRequired,
 };

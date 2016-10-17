@@ -1,17 +1,26 @@
+import { PropTypes } from 'react';
 import request from 'superagent';
 import { createAction, handleActions } from 'redux-actions';
 import config from '../../api/config';
 
-const SPACEURL_CREATED = 'SPACEURL_CREATED';
+export const itemStruct = PropTypes.shape({
+  url: PropTypes.string.isRequired,
+  validated: PropTypes.bool.isRequired,
+  lastUpdated: PropTypes.number.isRequired,
+});
+export const spaceUrlStruct = PropTypes.shape({
+  items: PropTypes.arrayOf(itemStruct),
+});
 
-export const fetched = createAction(SPACEURL_CREATED, result => result);
+const SPACEURL_FETCHED = 'SPACEURL_FETCHED';
+const SPACEURL_VALIDATE = 'SPACEURL_VALIDATE';
 
-export const addSpaceUrl = url => (dispatch) => {
+export const fetched = createAction(SPACEURL_FETCHED, result => result);
+export const validate = createAction(SPACEURL_VALIDATE, result => result);
+
+export const fetchSpaceUrl = () => (dispatch) => {
   request
-    .post(`${config.api.url}/url`)
-    .send({
-      url,
-    })
+    .get(`${config.api.url}/urls`)
     .set('Content-Type', 'application/json')
     .end(
       (err, res) => {
@@ -22,14 +31,40 @@ export const addSpaceUrl = url => (dispatch) => {
     );
 };
 
+export const validateSpaceUrl = (spaceUrl, secret) => (dispatch) => {
+  request
+    .put(`${config.api.url}/urls/${secret}`)
+    .send(spaceUrl)
+    .set('Content-Type', 'application/json')
+    .end(
+      (err) => {
+        if (!err) {
+          dispatch(validate(spaceUrl));
+        }
+      }
+    );
+};
+
 export const actions = {
-  addSpaceUrl,
+  fetchSpaceUrl,
+  validateSpaceUrl,
 };
 
 export default handleActions({
-  [SPACEURL_CREATED]: (state, { payload }) => (
-    {
-      spaceurl: payload,
-    }
-  ),
-}, { spaceurl: [] });
+  [SPACEURL_FETCHED]: (state, { payload }) => ({
+    ...state,
+    items: payload,
+  }),
+  [SPACEURL_VALIDATE]: (state, { payload }) => {
+    const newState = {
+      ...state,
+    };
+
+    newState.items.forEach(spaceUrl => ({
+      ...spaceUrl,
+      validated: spaceUrl.url === payload.url ? true : spaceUrl.validated,
+    }));
+
+    return newState;
+  },
+}, { items: [] });

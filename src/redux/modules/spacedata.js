@@ -6,6 +6,10 @@ import config from '../../api/config';
 export const filterStruct = PropTypes.arrayOf(PropTypes.string);
 export const spacedataElementStruct = PropTypes.shape({
   space: PropTypes.string.isRequired,
+  location: PropTypes.shape({
+    lat: PropTypes.number.isRequired,
+    lon: PropTypes.number.isRequired,
+  }),
 });
 export const itemsStruct = PropTypes.arrayOf(spacedataElementStruct);
 export const spacedataStruct = PropTypes.shape({
@@ -53,7 +57,7 @@ export default handleActions({
       ...state,
       items: payload,
     }
-),
+  ),
   [SPACEDATA_FILTER]: (state, { payload }) => {
     const newState = { ...state };
 
