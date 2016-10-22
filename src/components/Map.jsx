@@ -32,9 +32,7 @@ class Map extends React.Component {
         style={{ width: '100vw', height: '50vh', margin: 0, padding: 0, maxWidth: '100%' }}
       >
         <TileLayer
-            // url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
-            // url='http://{s}.tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png'
-          url="http://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png"
+          url="/map/tiles/{z}/{x}/{y}.png"
         />
         {this.props.spacedata.items.map(
           spacedata => (
