@@ -50,19 +50,22 @@ class EventList extends React.Component {
             )
             .map(event => (
               <TableRow
-                key={event.ImportedId + (event.Description || event.Summary)}
+                key={event.importedId + (event.description || event.summary)}
               >
                 <TableRowColumn style={{ width: '80px', padding: '5px' }}>
                   {this.formatDate(event.start)}
                 </TableRowColumn>
                 <TableRowColumn style={{ width: '55px', padding: '5px' }}>
-                  {event.WholeDayEvent ? null : this.formatTime(event.start)}
+                  {event.wholeDayEvent ? null : this.formatTime(event.start)}
                 </TableRowColumn>
                 <TableRowColumn>
-                  {event.Description || event.Summary}
+                  {event.description || event.summary}
                 </TableRowColumn>
                 <TableRowColumn>
                   {event.space}
+                </TableRowColumn>
+                <TableRowColumn>
+                  {event.url}
                 </TableRowColumn>
               </TableRow>
             ))}

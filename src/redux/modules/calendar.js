@@ -43,8 +43,8 @@ export default handleActions({
             {
               ...event,
               space: calendar.Space,
-              start: moment(event.Start),
-              end: moment(event.End),
+              start: moment(event.start),
+              end: moment(event.end),
             }
           ))
         )
