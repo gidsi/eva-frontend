@@ -2,9 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Table, TableBody, TableRow, TableRowColumn }
   from 'material-ui/Table';
+import InfoIcon from 'material-ui/svg-icons/action/info-outline';
 import { actions as calendarActions, eventStruct } from '../redux/modules/calendar';
 import { spacedataStruct } from '../redux/modules/spacedata';
-import InfoIcon from 'material-ui/svg-icons/action/info-outline';
 
 const mapStateToProps = state => ({
   events: state.calendars.items,
