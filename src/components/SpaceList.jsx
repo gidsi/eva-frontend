@@ -24,9 +24,9 @@ export class SpaceList extends React.Component {
   }
 
   render() {
-    const items = this.props.spacedata.items.sort((a, b) => {
-      return a.space.toUpperCase().localeCompare(b.space.toUpperCase());
-    });
+    const items = this.props.spacedata.items.sort(
+      (a, b) => a.space.toUpperCase().localeCompare(b.space.toUpperCase())
+    );
     return (
       <Table
         selectable
