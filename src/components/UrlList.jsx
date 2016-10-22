@@ -57,7 +57,10 @@ export class UrlList extends React.Component {
               .map(spaceurl => (
                 <TableRow key={spaceurl.url}>
                   <TableRowColumn>
-                    <a href={spaceurl.url}>
+                    <a
+                      href={spaceurl.url}
+                      style={{ color: 'white', textDecoration: 'none' }}
+                    >
                       {spaceurl.url}
                     </a>
                   </TableRowColumn>

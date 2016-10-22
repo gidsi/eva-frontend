@@ -15,6 +15,7 @@ const Marker = (props) => {
       onClick={handleClick}
       fillColor={color}
       color={color}
+      radius={2}
       center={[props.spacedata.location.lat, props.spacedata.location.lon]}
     />
   );

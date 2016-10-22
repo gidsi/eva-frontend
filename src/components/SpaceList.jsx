@@ -24,6 +24,9 @@ export class SpaceList extends React.Component {
   }
 
   render() {
+    const items = this.props.spacedata.items.sort((a, b) => {
+      return a.space.toUpperCase().localeCompare(b.space.toUpperCase());
+    });
     return (
       <Table
         selectable
@@ -34,11 +37,14 @@ export class SpaceList extends React.Component {
           stripedRows
           displayRowCheckbox={false}
         >
-          {this.props.spacedata.items
+          {items
             .map(space => (
               <TableRow key={space.space}>
                 <TableRowColumn>
                   {space.space}
+                </TableRowColumn>
+                <TableRowColumn>
+                  {space.url}
                 </TableRowColumn>
               </TableRow>
             )
