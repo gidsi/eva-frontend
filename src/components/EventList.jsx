@@ -3,11 +3,12 @@ import { connect } from 'react-redux';
 import { Table, TableBody, TableRow, TableRowColumn }
   from 'material-ui/Table';
 import { actions as calendarActions, eventStruct } from '../redux/modules/calendar';
-import { filterStruct } from '../redux/modules/spacedata';
+import { spacedataStruct } from '../redux/modules/spacedata';
+import InfoIcon from 'material-ui/svg-icons/action/info-outline';
 
 const mapStateToProps = state => ({
   events: state.calendars.items,
-  filter: state.spacedata.filter,
+  spacedata: state.spacedata,
 });
 
 class EventList extends React.Component {
@@ -16,7 +17,7 @@ class EventList extends React.Component {
       React.PropTypes.shape(eventStruct),
     ),
     fetchCalendars: React.PropTypes.func,
-    filter: filterStruct,
+    spacedata: spacedataStruct,
   };
 
   defaultProps = {
@@ -44,13 +45,13 @@ class EventList extends React.Component {
           {this.props.events
             .filter(event =>
               (
-                this.props.filter.indexOf(event.space) !== -1
-                || this.props.filter.length === 0
+                this.props.spacedata.filter.indexOf(event.space) !== -1
+                || this.props.spacedata.filter.length === 0
               )
             )
             .map(event => (
               <TableRow
-                key={event.importedId + (event.description || event.summary)}
+                key={event.importId + (event.description || event.summary)}
               >
                 <TableRowColumn style={{ width: '80px', padding: '5px' }}>
                   {this.formatDate(event.start)}
@@ -59,13 +60,15 @@ class EventList extends React.Component {
                   {event.wholeDayEvent ? null : this.formatTime(event.start)}
                 </TableRowColumn>
                 <TableRowColumn>
-                  {event.description || event.summary}
+                  {event.summary || event.description}
                 </TableRowColumn>
                 <TableRowColumn>
                   {event.space}
                 </TableRowColumn>
-                <TableRowColumn>
-                  {event.url}
+                <TableRowColumn style={{ textAlign: 'right' }}>
+                  {event.url && <a href={event.url}>
+                    <InfoIcon style={{ cursor: 'pointer' }} />
+                  </a>}
                 </TableRowColumn>
               </TableRow>
             ))}

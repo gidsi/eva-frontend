@@ -15,8 +15,11 @@ class SpaceApiInput extends React.Component {
   };
 
   getStyle = () => ({
-    display: 'flexbox',
+    display: 'flex',
     alignItems: 'center',
+    justifyContent: 'center',
+    width: '100%',
+    paddingBottom: '40px',
     ...this.props.style,
   });
 
@@ -42,9 +45,11 @@ class SpaceApiInput extends React.Component {
     return (
       <div style={this.getStyle()}>
         <TextField
+          hintText={'https://example.com/yourspaceapi.json'}
           name={'spaceapi-input'}
           onChange={this.handleInputChange}
           ref={ref => (this.spaceApiInput = ref)}
+          style={{ width: '100%', maxWidth: '340px' }}
         />
         <FloatingActionButton
           style={{ marginLeft: '20px' }}
