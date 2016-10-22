@@ -33,6 +33,11 @@ const Toolbar = () => (
             primaryText={'Spaces'}
           />
         </Link>
+        <a href={'http://ccc.de/de/imprint'}>
+          <MenuItem
+            primaryText={'Impressum'}
+          />
+        </a>
       </IconMenu>
     </ToolbarGroup>
   </MuiToolbar>

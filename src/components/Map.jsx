@@ -32,7 +32,7 @@ class Map extends React.Component {
         style={{ width: '100vw', height: '50vh', margin: 0, padding: 0, maxWidth: '100%' }}
       >
         <TileLayer
-          url="/map/tiles/{z}/{x}/{y}.png"
+          url="https://spaceapi.ccc.de/map/tiles/{z}/{x}/{y}.png"
         />
         {this.props.spacedata.items.map(
           spacedata => (

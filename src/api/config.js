@@ -1,5 +1,5 @@
 export default {
   api: {
-    url: '/api',
+    url: 'https://spaceapi.ccc.de/api',
   },
 };
