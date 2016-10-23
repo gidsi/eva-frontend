@@ -15,12 +15,29 @@ class SpaceApiInput extends React.Component {
   };
 
   getStyle = () => ({
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    width: '100%',
-    paddingBottom: '40px',
-    ...this.props.style,
+    formContainer: {
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      width: '100%',
+      paddingLeft: '20px',
+      paddingRight: '20px',
+      paddingBottom: '40px',
+    },
+    container: {
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'center',
+      alignItems: 'center',
+      ...this.props.style,
+    },
+    hint: {
+      color: 'white',
+      width: '100%',
+      maxWidth: '550px',
+      fontSize: '13px',
+      textAlign: 'center',
+    },
   });
 
   handleInputChange = (event) => {
@@ -42,22 +59,32 @@ class SpaceApiInput extends React.Component {
   };
 
   render() {
+    const style = this.getStyle();
     return (
-      <div style={this.getStyle()}>
-        <TextField
-          hintText={'https://example.com/yourspaceapi.json'}
-          name={'spaceapi-input'}
-          onChange={this.handleInputChange}
-          ref={ref => (this.spaceApiInput = ref)}
-          style={{ width: '100%', maxWidth: '340px' }}
-        />
-        <FloatingActionButton
-          style={{ marginLeft: '20px' }}
-          mini
-          onTouchTap={this.handleButtonClick}
-        >
-          <ContentAdd />
-        </FloatingActionButton>
+      <div style={style.container}>
+        <p style={style.hint}>
+          Trage die API-URL deines Hackerspaces hier ein und wir werden sie nach
+          kurzer Prüfung freischalten. Bei Fragen oder Problemen wende dich an&nbsp;
+          <a href={'mailto:lokal@ccc.de'} style={{ color: 'white', textDecoration: 'none' }}>
+            {'lokal@ccc.de'}
+          </a>.
+        </p>
+        <div style={style.formContainer}>
+          <TextField
+            hintText={'https://example.com/yourspaceapi.json'}
+            name={'spaceapi-input'}
+            onChange={this.handleInputChange}
+            ref={ref => (this.spaceApiInput = ref)}
+            style={{ width: '100%', maxWidth: '340px' }}
+          />
+          <FloatingActionButton
+            style={{ marginLeft: '20px' }}
+            mini
+            onTouchTap={this.handleButtonClick}
+          >
+            <ContentAdd />
+          </FloatingActionButton>
+        </div>
       </div>
     );
   }

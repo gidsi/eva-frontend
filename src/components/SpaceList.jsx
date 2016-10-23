@@ -44,7 +44,12 @@ export class SpaceList extends React.Component {
                   {space.space}
                 </TableRowColumn>
                 <TableRowColumn>
-                  {space.url}
+                  <a
+                    href={space.url}
+                    style={{ textDecoration: 'none', color: 'white' }}
+                  >
+                    {space.url}
+                  </a>
                 </TableRowColumn>
               </TableRow>
             )
