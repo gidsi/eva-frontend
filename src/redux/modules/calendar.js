@@ -2,9 +2,9 @@ import { PropTypes } from 'react';
 import request from 'superagent';
 import flatten from 'lodash/flatten';
 import moment from 'moment';
+import RRule from 'rrule';
 import { createAction, handleActions } from 'redux-actions';
 import config from '../../api/config';
-import RRule from 'rrule';
 
 export const eventStruct = {
   start: PropTypes.string.isRequired,
@@ -40,8 +40,8 @@ export default handleActions({
     const items = flatten(flatten(
       payload.map(
         calendar => (
-          calendar.Events.map(event => {
-            if(event.rrule) {
+          calendar.Events.map((event) => {
+            if (event.rrule) {
               const options = RRule.parseString(event.rrule);
               options.dtstart = moment(event.start).toDate();
               const rule = new RRule(options);
@@ -49,7 +49,8 @@ export default handleActions({
               return rule.between(
                 moment().toDate(),
                 moment().add(3, 'months').toDate()
-              ).map(date => ({
+              ).map(date => (
+                {
                   ...event,
                   space: calendar.Space,
                   start: moment(date),
@@ -60,11 +61,11 @@ export default handleActions({
 
             return [
               {
-              ...event,
-              space: calendar.Space,
-              start: moment(event.start),
-              end: moment(event.end),
-            }
+                ...event,
+                space: calendar.Space,
+                start: moment(event.start),
+                end: moment(event.end),
+              },
             ];
           })
         )
