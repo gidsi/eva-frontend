@@ -51,7 +51,7 @@ class EventList extends React.Component {
             )
             .map(event => (
               <TableRow
-                key={event.importId + (event.description || event.summary)}
+                key={event.importId + event.start.toLocaleString() + (event.description || event.summary)}
               >
                 <TableRowColumn style={{ width: '80px', padding: '5px' }}>
                   {this.formatDate(event.start)}

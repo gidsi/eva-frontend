@@ -4,6 +4,7 @@ import flatten from 'lodash/flatten';
 import moment from 'moment';
 import { createAction, handleActions } from 'redux-actions';
 import config from '../../api/config';
+import RRule from 'rrule';
 
 export const eventStruct = {
   start: PropTypes.string.isRequired,
@@ -36,20 +37,39 @@ export const actions = {
 
 export default handleActions({
   [CALENDARS_FETCHED]: (state, { payload }) => {
-    const items = flatten(
+    const items = flatten(flatten(
       payload.map(
         calendar => (
-          calendar.Events.map(event => (
-            {
+          calendar.Events.map(event => {
+            if(event.rrule) {
+              const options = RRule.parseString(event.rrule);
+              options.dtstart = moment(event.start).toDate();
+              const rule = new RRule(options);
+
+              return rule.between(
+                moment().toDate(),
+                moment().add(3, 'months').toDate()
+              ).map(date => ({
+                  ...event,
+                  space: calendar.Space,
+                  start: moment(date),
+                  end: null,
+                }
+              ));
+            }
+
+            return [
+              {
               ...event,
               space: calendar.Space,
               start: moment(event.start),
               end: moment(event.end),
             }
-          ))
+            ];
+          })
         )
       )
-    )
+    ))
     .filter(event => event.start.isAfter())
     .sort((a, b) => a.start - b.start);
     return { items };
