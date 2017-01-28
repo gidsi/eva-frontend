@@ -25,7 +25,6 @@ const Marker = (props) => {
     >
       <Popup>
         <div style={style.container}>
-          {props.spacedata.logo && props.spacedata.logo.startsWith('https') && <img src={props.spacedata.logo} style={style.logo} alt={'Logo'} />}
           <div>
             {props.spacedata.space}
             <br />
