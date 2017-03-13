@@ -42,21 +42,27 @@ export default handleActions({
         calendar => (
           calendar.Events.map((event) => {
             if (event.rrule) {
-              const options = RRule.parseString(event.rrule);
-              options.dtstart = moment(event.start).toDate();
-              const rule = new RRule(options);
+              try {
+                  const options = RRule.parseString(event.rrule);
+                  options.dtstart = moment(event.start).toDate();
+                  const rule = new RRule(options);
 
-              return rule.between(
-                moment().toDate(),
-                moment().add(3, 'months').toDate()
-              ).map(date => (
-                {
-                  ...event,
-                  space: calendar.Space,
-                  start: moment(date),
-                  end: null,
-                }
-              ));
+                  return rule.between(
+                      moment().toDate(),
+                      moment().add(3, 'months').toDate()
+                  ).map(date => (
+                      {
+                          ...event,
+                          space: calendar.Space,
+                          start: moment(date),
+                          end: null,
+                      }
+                  ));
+              }
+              catch (ex) {
+                console.log(ex);
+                return [];
+              }
             }
 
             return [
