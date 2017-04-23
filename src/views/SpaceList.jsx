@@ -5,7 +5,7 @@ import SpaceApiInput from '../components/SpaceApiInput';
 const SpaceListView = () => (
   <div>
     <SpaceList />
-    <SpaceApiInput style={{ paddingTop: '50px' }} />
+    <SpaceApiInput />
   </div>
 );
 

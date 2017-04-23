@@ -1,8 +1,10 @@
-import React from 'react';
-import { Provider } from 'react-redux';
-import { Router, Route, browserHistory } from 'react-router';
+import React from 'react'
+import {
+  BrowserRouter as Router,
+  Route
+} from 'react-router-dom';
 import injectTapEventPlugin from 'react-tap-event-plugin';
-import { syncHistoryWithStore } from 'react-router-redux';
+import { Provider } from 'react-redux';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import theme from './style/theme';
@@ -12,21 +14,17 @@ import SpaceList from './views/SpaceList';
 import UrlListView from './views/UrlListView';
 import layout from './layout';
 
-import './core.scss';
-
-// Needed for onTouchTap
-// http://stackoverflow.com/a/34015469/988941
 injectTapEventPlugin();
-
-const history = syncHistoryWithStore(browserHistory, store);
 
 const App = () => (
   <MuiThemeProvider muiTheme={getMuiTheme(theme)}>
     <Provider store={store}>
-      <Router history={history}>
-        <Route path="/list" component={layout(<SpaceList />)} />
-        <Route path="/urls" component={layout(<UrlListView />)} />
-        <Route path="*" component={layout(<IndexContainer />)} />
+      <Router>
+        <div>
+          <Route path="/list" component={layout(<SpaceList />)} />
+          <Route path="/urls" component={layout(<UrlListView />)} />
+          <Route exact path="/" component={layout(<IndexContainer />)} />
+        </div>
       </Router>
     </Provider>
   </MuiThemeProvider>

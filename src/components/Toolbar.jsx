@@ -8,7 +8,7 @@ import IconMenu from 'material-ui/IconMenu';
 import IconButton from 'material-ui/IconButton';
 import NavigationExpandMoreIcon from 'material-ui/svg-icons/navigation/expand-more';
 import MenuItem from 'material-ui/MenuItem';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 
 const Toolbar = () => (
   <MuiToolbar>
@@ -23,21 +23,18 @@ const Toolbar = () => (
           </IconButton>
         }
       >
-        <Link to="/">
-          <MenuItem
-            primaryText={'Events'}
-          />
-        </Link>
-        <Link to="/list">
-          <MenuItem
-            primaryText={'Spaces'}
-          />
-        </Link>
-        <a href={'http://ccc.de/de/imprint'}>
-          <MenuItem
-            primaryText={'Impressum'}
-          />
-        </a>
+        <MenuItem
+          primaryText={'Events'}
+          containerElement={<Link to="/" />}
+        />
+        <MenuItem
+          primaryText={'Spaces'}
+          containerElement={<Link to="/list" />}
+        />
+        <MenuItem
+          primaryText={'Impressum'}
+          href={'http://ccc.de/de/imprint'}
+        />
       </IconMenu>
     </ToolbarGroup>
   </MuiToolbar>
