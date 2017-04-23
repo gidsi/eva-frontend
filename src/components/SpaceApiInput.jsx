@@ -3,6 +3,7 @@ import request from 'superagent';
 import TextField from 'material-ui/TextField';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import ContentAdd from 'material-ui/svg-icons/content/add';
+import Snackbar from 'material-ui/Snackbar';
 import config from '../api/config';
 
 class SpaceApiInput extends React.Component {
@@ -12,6 +13,10 @@ class SpaceApiInput extends React.Component {
 
   static defaultProps = {
     style: {},
+  };
+
+  state = {
+    open: false
   };
 
   getStyle = () => ({
@@ -29,7 +34,7 @@ class SpaceApiInput extends React.Component {
       flexDirection: 'column',
       justifyContent: 'center',
       alignItems: 'center',
-      ...this.props.style,
+      paddingTop: '50px',
     },
     hint: {
       color: 'white',
@@ -46,16 +51,17 @@ class SpaceApiInput extends React.Component {
 
   handleButtonClick = () => {
     request
-          .post(`${config.api.url}/urls`)
-          .send({
-            url: this.state.url,
-          })
-          .set('Content-Type', 'application/json')
-          .end((err) => {
-            if (!err) {
-              this.spaceApiInput.input.value = '';
-            }
-          });
+      .post(`${config.api.url}/urls`)
+      .send({
+        url: this.state.url,
+      })
+      .set('Content-Type', 'application/json')
+      .end((err) => {
+        if (!err) {
+          this.spaceApiInput.input.value = '';
+          this.setState({ open: true });
+        }
+      });
   };
 
   render() {
@@ -85,6 +91,13 @@ class SpaceApiInput extends React.Component {
             <ContentAdd />
           </FloatingActionButton>
         </div>
+        <Snackbar
+          open={this.state.open}
+          message={'Die URL wurde hinzugefuegt und befindet sich nun im review.'}
+          autoHideDuration={4000}
+          style={{ minWidth: '490px' }}
+          onRequestClose={() => this.setState({ open: false })}
+        />
       </div>
     );
   }
